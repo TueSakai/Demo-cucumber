@@ -1,14 +1,28 @@
-Feature: Goto google.com
-  Check for open browser & successfully getting google
+Feature: Check Excel data
+  Check for open & successfully getting Excel data
 
-  Scenario Outline: sample goto Google.com
-    Given Get browser "<browser>" with "<url>"
-    When Input keyword: "<keyword>"
-    And Then click on search button
-    Then Verify search result: "<expect>" display
-    And Close test case
+#  Scenario Outline: sample goto Google.com
+#    Given Get browser "<Sheetname>" with <RowNumber>
+#    When Input keyword: "<Sheetname>" and <RowNumber>
+#    And Then click on search button
+#    Then Verify search result: "<Sheetname>" and <RowNumber> display
+#    And Close test case
+#
+#  Examples:
+#    | Sheetname | RowNumber |
+#    | Sheet1    |         0 |
+#    | Sheet1    |         1 |
+#    | Sheet1    |         2 |
+  Scenario Outline: Start test
+    Given I am on the login page
+    When I enter username "<username>" and password "<password>"
+    And I click on the login button
+    Then I should see the message "<message>"
 
-  Examples:
-    | browser   | url                     | keyword     | expect    |
-    | chrome    | https://www.google.com  | 123         | 123       |
-    | edge      | https://www.google.com  | 321         | 321       |
+    Examples:
+      | username | password | message |
+      | admin    | admin123 | Welcome |
+      | user     | user123  | Invalid |
+      | guest    | guest123 | Invalid |
+
+
